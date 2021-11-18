@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href=style.css>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <script src="script.js" defer></script>
+    <title>Point of Sale</title>
+</head>
+<body>
+    <div class="container" id="tablet">
+        <img src="images/frame.png" draggable="false">
+        <div class="background" id="BSBG">
+            <div class="logo" id="BSlogo">
+                <img src="images/BSLogo.png" onclick="mainMenu()">
+            </div>
+            <div class="content">
+                <div class="block" id="receipt">
+                    <h4>Receipt</h4>
+                    <h5>Order Number</h5>
+                    <table class="receipt-table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </table>
+                    <ul class="receipt-list">
+                    
+                    </ul>
+                    <div class="dotted-line"></div>
+                    <div class="summary">
+                        <h4>Subtotal</h4>
+                        
+                    </div>
+                </div>
+
+                <div class="block" id="menu">
+                    <button class="back-Btn" id="bkBtn" type="button" onclick="backBtn()">Back</button>
+                    <!-- Will show first screen (Burgers, Drinks, Sides)-->
+                    <div id="screenOne">
+                        <h4>Menu</h4>
+                        <div class="tab">
+                            <button class="menuTab" id="burgers" type="button" onclick="openMenu(event, 'Burgers')">Burgers</button>
+                            <button class="menuTab" id="drinks" type="button" onclick="openMenu(event, 'Drinks')">Drinks</button>
+                            <button class="menuTab" id="sides" type="button" onclick="openMenu(event, 'Sides')">Sides</button>
+                        </div>
+                    </div>
+                    <!-- Will show second screen when pressed (Burger Menu Items)-->
+                    <div class="screen" id="Burgers">
+                        <h4>Burgers</h4>
+                            <button class="button" id="bleederBtn" type="button" onclick="newReceipt('Bleeder')">Bleeder</button>
+                            <button class="button" id="moneyshotBtn" type="button" onclick="newReceipt('Moneyshot')">Moneyshot</button>
+                            <button class="button" id="torpedoBtn" type="button" onclick="newReceipt('Torpedo')">Torpedo</button>
+                            <button class="button" id="meatfreeBtn" type="button" onclick="newReceipt('Meatfree')">Meatfree</button>
+                    </div>
+                    <!-- Will show third screen when pressed (Drinks Menu Items)-->
+                    <div class="screen" id="Drinks">
+                        <h4>Drinks</h4>
+                            <button class="button" id="waterBtn" type="button" onclick="newReceipt('Water')">Bottle of Water</button>
+                            <button class="button" id="monsterBtn" type="button" onclick="newReceipt('Monster')">Energy Drink</button>
+                            <button class="button" id="sodaBtn" type="button" onclick="newReceipt('Soda')">Soda</button>
+                            <button class="button" id="milkshakeBtn" type="button" onclick="newReceipt('Milkshake')">Milkshake</button>
+                    </div>
+
+                    <!-- Will show fourth screen when pressed (Sides Menu Items)-->
+                    <div class="screen" id="Sides">
+                        <h4>Sides</h4>
+                            <button class="button" id="friesBtn" type="button" onclick="newReceipt('Fries')">Fries</button>
+                            <button class="button" id="oringsBtn" type="button" onclick="newReceipt('Onion Rings')">Onion Rings</button>
+                    </div>
+
+                    <!-- Will show combo screen option when a Burger is pressed -->
+                    <div class="screen" id="combo">
+                        <h4>Add-ons</h4>
+                        <div class="items">
+                            <button class="button" id="comboBtn" type="button" onclick="combo('yes')">Combo</button>
+                            <button class="button" id="comboBtn" type="button" onclick="combo('no')">None</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="submit" id="submitBtn" type="submit" onclick = "newReceipt()">Submit</button>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

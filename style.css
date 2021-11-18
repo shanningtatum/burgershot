@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+/* general stylings */
+:root{
+    --yellow:#ffcd00;
+    --red:#be2026;
+    --white:#f8f8f7;
+    --grey:rgb(201, 201, 201);
+}
+*,*::before,*::after{
+    box-sizing:border-box;
+}
+#tablet img{
+    position:relative;
+}
+.background{
+    position:absolute;
+    margin-left:85px;
+    top:85px;
+    width:1281px;
+    height:820px;
+}
+#BSBG{
+    background-image:linear-gradient(to bottom,var(--yellow),var(--red));
+}
+.logo{
+    text-align:center;
+}
+.logo img{
+    margin-top:20px;
+    width:300px;
+}
+.content{
+    font-family:'Poppins',sans-serif;
+    display:flex;
+    flex-direction:row;
+    margin-top:100px;
+}
+.block{
+    background-color:var(--white);
+    align-content:left;
+    width:450px;
+    height:550px;
+    border-radius:20px;
+}
+.block:nth-child(2){
+    background-color:var(--white);
+    width:700px;
+}
+/* Receipt column styling */
+#receipt{
+    margin-left:60px;
+    margin-right:60px;
+    text-align:center;
+}
+#receipt h5{
+    text-align:left;
+    margin-left:30px;
+}
+.receiptPrint{
+    font-weight:400;
+    margin-left:-10px;
+    display:flex;
+    justify-content:space-between;
+    list-style:none;
+    align-items:center;
+    width:100%;
+}
+.receipt-table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+.receipt-item{
+    text-align:left;
+    width:6rem;
+}
+.item-cost{
+    padding:0px;
+    margin:0px;
+}
+.item-quantity{
+    font-family:'Poppins',sans-serif;
+    width:2rem;
+    border:solid 1px grey;
+    border-radius:3px;
+    background-color:var(--white);
+}
+/* dotted line */
+.dotted-line{
+    padding:1px;
+    width:431px;
+    border-top:dashed 1px black;
+    box-sizing:border-box;
+}
+/* summary stylings */
+.summary{
+    text-align:left;
+    display:flex;
+    flex-direction:row;
+    text-align:right;
+    justify-content:space-between;
+    width:400px;
+    margin-left:30px;
+}
+.summary-price{
+    margin-right:3rem;
+}
+/* add, minus, delete button stylings */
+
+.minus-Btn,.add-Btn, .trash-Btn{
+    color:#222;
+    border:none;
+    background-color:var(--white);
+    z-index:9999;
+}
+.minus-Btn {
+    margin-left:50px;
+}
+.add-Btn {
+    margin-right:50px;
+}
+.receipt-table td:nth-child(3){
+    padding-right:20px;
+}
+.fa-plus, .fa-minus, .fa-trash{
+    pointer-events:none;
+}
+
+/* Menu column styling */
+.tab{
+    display:flex;
+    flex-direction:row;
+    margin-left:30px;
+}
+#screenOne{
+    text-align:center;
+}
+.button{
+    font-family:'Poppins',sans-serif;
+    font-weight:500;
+    background-color:var(--white);
+    padding:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    width:100px;
+    height:100px;
+    vertical-align:middle;
+    border:none;
+    z-index:9999999;
+}
+/* print line styling */
+.menuTab{
+    font-family:'Poppins',sans-serif;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    background-color:var(--white);
+    align-items:center;
+    align-content:center;
+    color:#222;
+    font-weight:500;
+    width:100px;
+    padding:5px;
+    border:none;
+    z-index:9999;
+}
+.active{
+    background-color:var(--grey);
+    z-index:9999;
+    
+}
+.back-Btn{
+    z-index:9999;
+    display:none;
+}
+
+#bleederBtn, #moneyshotBtn, #torpedoBtn, #meatfreeBtn, #waterBtn, #monsterBtn, #sodaBtn, #milkshakeBtn, #comboBtn, #friesBtn, #oringsBtn{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    color:#222;
+    font-family:'Poppins',sans-serif;
+    padding:10px;
+    margin-bottom:10px; 
+    width:100px;
+    height:100px;
+    margin-left:auto;
+    margin-right:auto;
+    border:none;
+    border-radius:20px;
+    z-index:9999999;
+}
+#Burgers, #Drinks, #Sides, #combo{
+    display:none;
+    text-align:center;
+    z-index:999999;
+}
+
+
+/* Submit Button stylings */
+
+.submit{
+    float:right;
+    border:none;
+    font-family:'Poppins',sans-serif;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius:10px;
+    margin-top:200px;
+    z-index:99999;
+}
+
+
