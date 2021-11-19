@@ -15,197 +15,121 @@ function openMenu(evt, menuName){
 
 document.getElementById("burgers").click();
 
-function alertMenu(item){
-
-    if (item == 'Burgers'){
-        alert("Burger has been pressed");
-    }
-    else if (item == 'Drinks'){
-        alert("Drinks has been pressed");
-    }
-    else if (item == 'Sides'){
-        alert("Sides has been pressed");
-    }
-    else if (item == 'Bleeder'){
-        alert("Bleeder Burger");
-    }
-    else if(item == 'Moneyshot'){
-        combo(item);
-        alert("Moneyshot Burger");
-    }
-    else if(item == 'Torpedo'){
-        combo(item);
-        alert("Torpedo Burger");
-    }
-    else if(item == 'Meatfree'){
-        combo(item);
-        alert("Meatfree Burger");
-    }
-    else if(item == 'Water'){
-        alert("Water");
-    }
-    else if(item == 'Monster'){
-        alert("Monster");
-    }
-    else if(item == 'Soda'){
-        alert("Soda");
-    }
-    else if(item == 'Milkshake'){
-        alert("Milkshake");
-    }
-    else if(item == 'Combo'){
-        alert("Combo");
-    }
-    else if(item == 'Fries'){
-        alert("Fries");
-    }
-    else if(item == 'Onion Rings'){
-        alert("Onion Rings");
-    }
-}
-
 const submitButton = document.querySelector('.submit');
 const receiptList = document.querySelector('.receipt-list');
-const summaryList = document.querySelector('.summary');
-const receiptTotal = document.createElement('h4');
-const quantityCheck = document.querySelector('.item-quantity');
+const summaryList = document.querySelector('.summary-price');
+const itemSummaryList = document.querySelector('.item-cost');
 
+const productsB = document.querySelector("#Burgers");
+const productsD = document.querySelector("#Drinks");
+const productsS = document.querySelector("#Sides");
+const cartItemsSummary = document.querySelector(".receipt-list");
 
-
-receiptList.addEventListener('click', deleteCheck);
-receiptList.addEventListener('click', qtyCheck);
-
-let itemClick = 1;
-var printCount = 0;
-var summaryPrice = 0;
-var qtyCount = 1;
-const line = 10;
-
-receiptTotal.innerHTML = ("$" + summaryPrice);
-receiptTotal.classList.add("summary-price");
-summaryList.appendChild(receiptTotal);
-
-function newReceipt(item){
-    console.log('WTF');
-
-    if (printCount <= line){
-    // receipt Div
-    const receiptLine = document.createElement("tr");
-    receiptLine.classList.add("receiptPrint");
-
-    // Create thread
-    const receiptPrint = document.createElement('td');
-    receiptPrint.innerText = item;
-    receiptPrint.classList.add('receipt-item');
-    receiptLine.appendChild(receiptPrint);
-
-    // Subtract quantity button
-    const minusBtn = document.createElement('button');
-    minusBtn.innerHTML = '<i class="fas fa-minus"></i>';
-    minusBtn.classList.add("minus-Btn");
-    receiptLine.appendChild(minusBtn);
-
-    // creates item quantity input
-    const itemQty = document.createElement ('input');
-    itemQty.value = qtyCount;
-    itemQty.classList.add('item-quantity');
-    itemQty.setAttribute("id","itemQuantity");
-    receiptLine.appendChild(itemQty);
-
-    // Add quantity button
-    const plusBtn = document.createElement('button');
-    plusBtn.innerHTML = '<i class="fas fa-plus"></i>';
-    plusBtn.classList.add("add-Btn");
-    receiptLine.appendChild(plusBtn);
-
-    // Print item Price
-        if (item == 'Bleeder' || item == 'Torpedo'|| item == 'Meatfree'){
-            var itemPrice = 100;
-
-            const dollarSign = document.createElement('td');
-            dollarSign.innerText = "$";
-            receiptLine.appendChild(dollarSign);
-
-            const itemCost = document.createElement('td');
-            itemCost.innerText = (itemPrice*qtyCount);
-            itemCost.classList.add('item-cost');
-            itemCost.setAttribute("id","itemCost");
-            receiptLine.appendChild(itemCost);
-
-            summaryPrice = summaryPrice + itemPrice;
-        }
-        else if(item == 'Moneyshot' || item == 'Milkshake'){
-            var itemPrice = 200;
-
-            const dollarSign = document.createElement('td');
-            dollarSign.innerText = "$";
-            receiptLine.appendChild(dollarSign);
-
-            const itemCost = document.createElement('td');
-            itemCost.innerText = (itemPrice*qtyCount);
-            itemCost.classList.add('item-cost');
-            receiptLine.appendChild(itemCost);
-
-            summaryPrice = summaryPrice + itemPrice;
-        }
-        else if(item == 'Fries' || item == 'Onion Rings'){
-            var itemPrice = 40;
-
-            const dollarSign = document.createElement('td');
-            dollarSign.innerText = "$";
-            receiptLine.appendChild(dollarSign);
-
-            const itemCost = document.createElement('td');
-            itemCost.innerText = (itemPrice*qtyCount);
-            itemCost.classList.add('item-cost');
-            itemCost.setAttribute('id','itemCost');
-            receiptLine.appendChild(itemCost);
-
-            summaryPrice = summaryPrice + itemPrice;
-        }
-        else if(item == 'Water' || item == 'Soda'|| item == 'Monster'){
-            var itemPrice = 10;
-
-            const dollarSign = document.createElement('td');
-            dollarSign.innerText = "$";
-            receiptLine.appendChild(dollarSign);
-
-            const itemCost = document.createElement('td');
-            itemCost.innerText = (itemPrice*qtyCount);
-            itemCost.classList.add('item-cost');
-            receiptLine.appendChild(itemCost);
-
-            summaryPrice = summaryPrice + itemPrice;
-        }
-    
-    // Delete item
-    const trashBtn = document.createElement ('button');
-    trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
-    trashBtn.classList.add("trash-Btn");
-    receiptLine.appendChild(trashBtn);
-
-    // Summary total
-    receiptTotal.innerHTML = ("$" + summaryPrice);
-    receiptTotal.classList.add("summary-price");
-    summaryList.appendChild(receiptTotal);
-
-    // Append to List
-    receiptList.appendChild(receiptLine);
-
-    console.log(qtyCount);
-    printCount = printCount + 1;
-
-    }
-    else {
-        alert("max limit");
-    }
+function renderProducts(){
+    productsBurger.forEach((product) => {
+        productsB.innerHTML += `
+        <button class="button" id="${product.id}" type="button" onclick="newReceipt(${product.id})">${product.name}</button>
+        `
+    })
+    productsDrinks.forEach((product)=>{
+        productsD.innerHTML += `
+        <button class="button" id="${product.id}" type="button" onclick="newReceipt(${product.id})">${product.name}</button>
+        `
+    })
+    productsSides.forEach((product)=>{
+        productsS.innerHTML += `
+        <button class="button" id="${product.id}" type="button" onclick="newReceipt(${product.id})">${product.name}</button>
+        `
+    })
 }
 
-function priceUpdate(){
+renderProducts();
 
-    console.log("price update");
-    alert(qtyCount);
+let cart = [];
+let drinkCart = [];
+
+function newReceipt(id) {
+
+    //check if product already exists in cart
+    if(cart.some((item)=> item.id === id)){
+        changeQty("plus",id);
+    }
+    else{
+        const item = products.find ((product) => product.id === id);
+
+        cart.push({
+            ...item,
+            numberOfUnits:1,
+        });
+        console.log(cart);
+    }
+    updateCart();
 }
+
+// update cart
+
+function updateCart(){
+    renderCartItems();
+    renderSubtotal();
+}
+
+//calculate and render subtotal
+function renderSubtotal (){
+    let totalPrice = 0, totalItems = 0;
+
+    cart.forEach((item) => {
+        totalPrice += item.price * item.numberOfUnits;
+        totalItems  += item.numberOfUnits;
+    });
+
+    summaryList.innerHTML = `Subtotal (${totalItems} items): $${totalPrice}`
+
+}
+
+// render cart items
+function renderCartItems(){
+    cartItemsSummary.innerHTML = ""; // clear cart element
+    cart.forEach((item) => {
+        cartItemsSummary.innerHTML += `
+        <ul class="receiptPrint">
+            <li class="receipt-item">${item.name}</li>
+            <li><div class="minus-Btn" onclick="changeQty('minus',${item.id})"><i class="fas fa-minus"></i></div></li>
+            <li><div class="item-quantity">${item.numberOfUnits}</div></li>
+            <li><div class="add-Btn" onclick="changeQty('plus',${item.id})"><i class="fas fa-plus"></i></div></li>
+            <li>$</li>
+            <li class="item-cost">${item.price}</li>
+            <li><div class="trash-Btn" onclick="removeItem(${item.id})"><i class="fas fa-trash"></i></div></li>
+        </ul>
+        `
+    })
+}
+
+// change number of units for an item
+
+function changeQty (action, id){
+    cart = cart.map((item)=>{
+
+        let numberOfUnits = item.numberOfUnits;
+
+        if(item.id === id){
+
+            if(action === "minus" && numberOfUnits > 1){
+                numberOfUnits--;
+            }
+            else if (action === "plus"){
+                numberOfUnits++;
+            }
+        }
+
+        return {
+            ...item,
+            numberOfUnits,
+        }
+    })
+
+    updateCart();
+}
+
 
 function mainMenu(){
     const menuButton = document.querySelector('#screenOne');
@@ -222,49 +146,12 @@ function mainMenu(){
     comboMenu.style.display = 'none';
 }
 
-function backBtn(){
-    console.log('clicked');
-}
+function removeItem (id){
 
-function deleteCheck(e){
-    const deleteItem =  e.target;
+    cart = cart.filter( (item) => item.id !== id);
 
-    if(deleteItem.classList[0]==="trash-Btn"){
-        const delItem = deleteItem.parentElement;
-        const subCost = delItem.children[5].innerText;
-
-        delItem.remove();
-
-        summaryPrice = summaryPrice - subCost;
-        receiptTotal.innerHTML = ("$" + (summaryPrice));
-        receiptTotal.classList.add("summary-price");
-        summaryList.appendChild(receiptTotal);
-
-        printCount = printCount - 1;
-    }
-    console.log(e.target);
-}
-
-function qtyCheck(e){
-    const addQty = e.target;
-    var valueCount;
-    var incrementButton = document.getElementsByClassName("add-Btn");
-    var decrementButton = document.getElementsByClassName("minus-Btn");
-
-
-    for(var i = 0; i< incrementButton.length; i++){
-        var button = incrementButton[i];
-
-        button.addEventListener('click', function(e){
-            
-            var buttonClicked = e.target;
-
-            var input = buttonClicked.parentElement.children[2];
-            var inputValue = input.value;
-            var newValue = parseInt(inputValue) + 1;
-            input.value = newValue;
-
-        })
-    }
+    updateCart();
 
 }
+
+

@@ -38,7 +38,6 @@
 }
 .block{
     background-color:var(--white);
-    align-content:left;
     width:450px;
     height:550px;
     border-radius:20px;
@@ -57,10 +56,18 @@
     text-align:left;
     margin-left:30px;
 }
+.receipt-list{
+    width:100%;
+}
+.receipt-list li{
+    padding:0;
+    margin:0;
+}
 .receiptPrint{
     font-weight:400;
     margin-left:-10px;
     display:flex;
+    flex-direction:row;
     justify-content:space-between;
     list-style:none;
     align-items:center;
@@ -68,12 +75,16 @@
 }
 .receipt-table{
     border-collapse:collapse;
-    width:100%;
+    width:30rem;
+}
+.receipt-header th:nth-child(2){
+    background:red;
 }
 
 .receipt-item{
+    display:flex;
     text-align:left;
-    width:6rem;
+    width:6.5rem;
 }
 .item-cost{
     padding:0px;
@@ -82,8 +93,6 @@
 .item-quantity{
     font-family:'Poppins',sans-serif;
     width:2rem;
-    border:solid 1px grey;
-    border-radius:3px;
     background-color:var(--white);
 }
 /* dotted line */
@@ -120,9 +129,7 @@
 .add-Btn {
     margin-right:50px;
 }
-.receipt-table td:nth-child(3){
-    padding-right:20px;
-}
+
 .fa-plus, .fa-minus, .fa-trash{
     pointer-events:none;
 }
@@ -138,13 +145,16 @@
 }
 .button{
     font-family:'Poppins',sans-serif;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     font-weight:500;
     background-color:var(--white);
     padding:10px;
     margin-top:10px;
     margin-bottom:10px;
+    margin-left:20px;
     width:100px;
     height:100px;
+    border-radius:20px;
     vertical-align:middle;
     border:none;
     z-index:9999999;
@@ -174,20 +184,6 @@
     display:none;
 }
 
-#bleederBtn, #moneyshotBtn, #torpedoBtn, #meatfreeBtn, #waterBtn, #monsterBtn, #sodaBtn, #milkshakeBtn, #comboBtn, #friesBtn, #oringsBtn{
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    color:#222;
-    font-family:'Poppins',sans-serif;
-    padding:10px;
-    margin-bottom:10px; 
-    width:100px;
-    height:100px;
-    margin-left:auto;
-    margin-right:auto;
-    border:none;
-    border-radius:20px;
-    z-index:9999999;
-}
 #Burgers, #Drinks, #Sides, #combo{
     display:none;
     text-align:center;
