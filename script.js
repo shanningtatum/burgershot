@@ -132,18 +132,17 @@ function changeQty (action, id){
 
 
 function mainMenu(){
-    const menuButton = document.querySelector('#screenOne');
-    const burgerMenu = document.querySelector('#screenTwo');
-    const drinkMenu = document.querySelector('#screenThree');
-    const sideMenu = document.querySelector('#screenFour');
-    const comboMenu = document.querySelector('#combo');
 
-    alert('Returning to main menu');
-    menuButton.style.display = 'block';
-    burgerMenu.style.display = 'none';
-    drinkMenu.style.display = 'none';
-    sideMenu.style.display = 'none';
-    comboMenu.style.display = 'none';
+    if (confirm('Clear the cart?')){
+        cartItemsSummary.innerHTML = "";
+        cart.forEach(() => {
+            cartItemsSummary.innerHTML += ``
+            cart = [];
+            renderSubtotal();
+        })
+    } else {
+        alert("Action has been cancelled");
+    }
 }
 
 function removeItem (id){

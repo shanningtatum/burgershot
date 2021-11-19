@@ -20,14 +20,13 @@
             <div class="content">
                 <div class="block" id="receipt">
                     <h4>Receipt</h4>
-                    <h5>Order Number</h5>
-                    <table class="receipt-table">
-                        <tr class = "receipt-header">
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Unit Price</th>
-                        </tr>
-                    </table>
+                    <div class="receipt-table">
+                        <ul class = "receipt-header">
+                            <li>Name</li>
+                            <li>Quantity</li>
+                            <li>Unit Price</li>
+                        </ul>
+                    </div>
                     <div class="receipt-list">
                     
                     </div>
@@ -39,7 +38,6 @@
                 </div>
 
                 <div class="block" id="menu">
-                    <button class="back-Btn" id="bkBtn" type="button" onclick="backBtn()">Back</button>
                     <!-- Will show first screen (Burgers, Drinks, Sides)-->
                     <div id="screenOne">
                         <h4>Menu</h4>
@@ -66,8 +64,6 @@
                         <!-- render sides menu here -->
                     </div>
                 </div>
-
-                <button class="submit" id="submitBtn" type="submit" onclick = "newReceipt()">Submit</button>
 
             </div>
         </div>
