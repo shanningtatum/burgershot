@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href=style.css>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <script src="login.js"></script>
     <script src="products.js"></script>
     <script src="script.js" defer></script>
     <title>Point of Sale</title>
@@ -17,9 +18,25 @@
             <div class="logo" id="BSlogo">
                 <img src="images/BSLogo.png" onclick="mainMenu()">
             </div>
-            <div class="content">
+            <div class="box">
+                <div class="clear-cart-input">
+                    <h4>Clear the cart?</h4>
+                    <button class="cart-input" id="yes-input" onclick="clearCart('yes')">Yes</button>
+                    <button class="cart-input" id="no-input" onclick="clearCart('no')">No</button>
+                </div>
+            </div>
+            <div class="login-container">
+                <h4>Login</h4>
+                <div id="errorMessage">Incorrect Login</div>
+                <input class="username" id="username" type="text" placeholder="Enter Username"></input>
+                <input class="password" id="password" type ="password" placeholder="Password"></input>
+                <input class="submit" type="submit" value="Login" onclick="validation()"></input>
+            </div>
+
+            <div class="content" id="menu-content">
                 <div class="block" id="receipt">
-                    <h4>Receipt</h4>
+                    <h4 id="receipt-title">Receipt</h4>
+                    <!-- render cashier name here-->
                     <div class="receipt-table">
                         <ul class = "receipt-header">
                             <li>Name</li>
@@ -63,7 +80,9 @@
                         <h4>Sides</h4>
                         <!-- render sides menu here -->
                     </div>
-                    <div class="clear-cart" onclick="mainMenu()">Clear Cart</div>
+                    <button class="clear-cart" onclick="mainMenu()">Clear Cart
+                    </button>
+
                 </div>
 
             </div>

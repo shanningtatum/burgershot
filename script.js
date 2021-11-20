@@ -19,6 +19,11 @@ const submitButton = document.querySelector('.submit');
 const receiptList = document.querySelector('.receipt-list');
 const summaryList = document.querySelector('.summary-price');
 const itemSummaryList = document.querySelector('.item-cost');
+const clearCartPopup = document.querySelector('.box');
+const cashierName = document.querySelector ('#receipt-title');
+const loginForm = document.querySelector('.login-container');
+const menuDisplay = document.querySelector('#menu-content');
+const errMessage = document.querySelector('#errorMessage');
 
 const productsB = document.querySelector("#Burgers");
 const productsD = document.querySelector("#Drinks");
@@ -130,27 +135,56 @@ function changeQty (action, id){
     updateCart();
 }
 
+// clears the receipt lines when clear cart button is pressed
+function clearCart(input){
 
-function mainMenu(){
-
-    if (confirm('Clear the cart?')){
+    if (input == 'yes'){
         cartItemsSummary.innerHTML = "";
+        clearCartPopup.style.display="none";
         cart.forEach(() => {
             cartItemsSummary.innerHTML += ``
             cart = [];
             renderSubtotal();
-        })
+    })
     } else {
-        alert("Action has been cancelled");
+        clearCartPopup.style.display="none";
     }
 }
 
-function removeItem (id){
+// opens the modal that asks if they want to clear the cart
+function mainMenu(){
+    clearCartPopup.style.display="block";
+}
 
+function removeItem (id){
     cart = cart.filter( (item) => item.id !== id);
 
     updateCart();
-
 }
 
+
+// checks password 
+
+function validation (){
+    var usernameInput = document.getElementById('username').value;
+    var passwordInput = document.getElementById('password').value;
+
+    errMessage.innerHTML += ``;
+    for ( i = 0; i < accounts.length; i++){
+        if (usernameInput == accounts[i].username && passwordInput == accounts[i].password){
+
+            var name = accounts[i].FirstName;
+            
+            cashierName.innerHTML += `<h5 class="cashier"> Cashier: ${name}</h5>`
+            errMessage.innerHTML += ``;
+            loginForm.style.display = "none";
+            menuDisplay.style.display = "flex";
+            return;
+        }
+        else{
+            errMessage.style.display = "block";
+        }
+
+    }
+}
 
