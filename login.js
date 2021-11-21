@@ -13,5 +13,10 @@ const accounts = [
         FirstName: "Christopher",
         username: "rigatoni",
         password: "faggio",
+    },
+    {
+        FirstName: "Bryan",
+        username: "bdogadoo",
+        password: "dogadoo",
     }
 ]
