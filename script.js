@@ -1,3 +1,41 @@
+const submitButton = document.querySelector('.submit');
+const receiptList = document.querySelector('.receipt-list');
+const summaryList = document.querySelector('.summary-price');
+const itemSummaryList = document.querySelector('.item-cost');
+const clearCartPopup = document.querySelector('.box');
+const cashierName = document.querySelector ('.cashier-info');
+const dateTime = document.querySelector ('.dateInfo');
+const loginForm = document.querySelector('.login-container');
+const menuDisplay = document.querySelector('#menu-content');
+const errMessage = document.querySelector('#errorMessage');
+const logoutBtn = document.querySelector(".logout-container");
+
+const productsB = document.querySelector("#Burgers");
+const productsD = document.querySelector("#Drinks");
+const productsS = document.querySelector("#Sides");
+const cartItemsSummary = document.querySelector(".receipt-list");
+
+
+/* setting date variables */
+let date = new Date();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+let day = date.getDate();
+let currentDate = `${month}/${day}/${year}`;
+
+/* setting time variables */
+
+let hour = addZero(date.getHours());
+let minutes = addZero(date.getMinutes());
+let seconds = addZero(date.getSeconds());
+let currentTime = `${hour}:${minutes}:${seconds}`;
+
+// allows the date and time to print in double digits
+function addZero(num){
+    return num < 10 ? `0${num}`:num;
+}
+
+
 function openMenu(evt, menuName){
     var i, screen, menuTab;
     screen = document.getElementsByClassName("screen");
@@ -15,21 +53,7 @@ function openMenu(evt, menuName){
 
 document.getElementById("burgers").click();
 
-const submitButton = document.querySelector('.submit');
-const receiptList = document.querySelector('.receipt-list');
-const summaryList = document.querySelector('.summary-price');
-const itemSummaryList = document.querySelector('.item-cost');
-const clearCartPopup = document.querySelector('.box');
-const cashierName = document.querySelector ('#receipt-title');
-const loginForm = document.querySelector('.login-container');
-const menuDisplay = document.querySelector('#menu-content');
-const errMessage = document.querySelector('#errorMessage');
-
-const productsB = document.querySelector("#Burgers");
-const productsD = document.querySelector("#Drinks");
-const productsS = document.querySelector("#Sides");
-const cartItemsSummary = document.querySelector(".receipt-list");
-
+// this will create the buttons for each menu tab
 function renderProducts(){
     productsBurger.forEach((product) => {
         productsB.innerHTML += `
@@ -72,7 +96,6 @@ function newReceipt(id) {
 }
 
 // update cart
-
 function updateCart(){
     renderCartItems();
     renderSubtotal();
@@ -135,13 +158,22 @@ function changeQty (action, id){
     updateCart();
 }
 
-// clears the receipt lines when clear cart button is pressed
+// clears the receipt lines when clear cart button is pressed and updates the time and date
 function clearCart(input){
 
     if (input == 'yes'){
         cartItemsSummary.innerHTML = "";
+
+        updateDate();
+
         clearCartPopup.style.display="none";
+        dateTime.innerHTML = "";
+        dateTime.innerHTML += `
+        <h5 id="date">Date: ${currentDate}</h5>
+        <h5 id="time">Time: ${currentTime}</h5>`;
+
         cart.forEach(() => {
+    
             cartItemsSummary.innerHTML += ``
             cart = [];
             renderSubtotal();
@@ -149,6 +181,22 @@ function clearCart(input){
     } else {
         clearCartPopup.style.display="none";
     }
+}
+
+function updateDate () {
+    date = new Date();
+        
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    day = date.getDate();
+    currentDate = `${month}/${day}/${year}`;
+    
+    /* setting time variables */
+    
+    hour = addZero(date.getHours());
+    minutes = addZero(date.getMinutes());
+    seconds = addZero(date.getSeconds());
+    currentTime = `${hour}:${minutes}:${seconds}`;
 }
 
 // opens the modal that asks if they want to clear the cart
@@ -163,7 +211,7 @@ function removeItem (id){
 }
 
 
-// checks password 
+// checks password and will print cashier name, current date, and time
 
 function validation (){
     var usernameInput = document.getElementById('username').value;
@@ -173,9 +221,12 @@ function validation (){
     for ( i = 0; i < accounts.length; i++){
         if (usernameInput == accounts[i].username && passwordInput == accounts[i].password){
 
+            updateDate();
             var name = accounts[i].FirstName;
-            
+            logoutBtn.style.display = "flex";
             cashierName.innerHTML += `<h5 class="cashier"> Cashier: ${name}</h5>`
+            dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
+            <h5 id="time">Time: ${currentTime}</h5>`;
             errMessage.innerHTML += ``;
             loginForm.style.display = "none";
             menuDisplay.style.display = "flex";
@@ -188,3 +239,21 @@ function validation (){
     }
 }
 
+function logout (){
+
+    clearFields();
+
+    cashierName.innerHTML = "";
+    dateTime.innerHTML = "";
+    menuDisplay.style.display = "none";
+    loginForm.style.display = "flex";
+    logoutBtn.style.display = "none";
+}
+
+function clearFields (){
+    var usernameInput = document.getElementById('username').value;
+    var passwordInput = document.getElementById('password').value;
+
+    usernameInput.value = "";
+    passwordInput.value = "";
+}
