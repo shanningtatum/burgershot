@@ -144,6 +144,34 @@ const services = [
     }
 ]
 
+const alcohol = [
+    {
+        id:0,
+        name: "Liquid Viagra",
+        price:200.00,
+    },
+    {
+        id:1,
+        name: "Golden Shower",
+        price:200.00,
+    },
+    {
+        id:2,
+        name: "Leg Spreader",
+        price:215,
+    },
+    {
+        id:3,
+        name: "Unicorn Tears",
+        price:230,
+    },
+    {
+        id:4,
+        name: "Seamen Shot",
+        price: 210.00
+    },
+]
+
 const logos = [
     {   
         // burgershot logo
@@ -152,5 +180,13 @@ const logos = [
     {
         // lost mc logo
         imgSrc: "images/LostLogo.png",
+    },
+    {
+        // auto exotic logo
+        imgSrc: "images/AutoExotic.png",
+    },
+    {
+        // VU Logo
+        imgSrc: "images/VU.png",
     }
 ]

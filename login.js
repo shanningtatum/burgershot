@@ -22,5 +22,17 @@ const accounts = [
         username: "bdogadoo",
         password: "dogadoo",
         job: "burgershot",
+    },
+    {
+        FirstName: "Jessica",
+        username: "jcruz",
+        password: "lapras",
+        job: "autoexotic",
+    },
+    {
+        FirstName: "Leon",
+        username: "leonluna",
+        password: "flyingchancla",
+        job: "vunicorn",
     }
 ]

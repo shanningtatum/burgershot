@@ -90,6 +90,14 @@ function renderServices(){
     })
 }
 
+//this will create the buttons for each drink
+function renderDrinks(){
+    
+    alcohol.forEach((alcoholic) => {
+        productsB.innerHTML += `
+        <button class="button" id="${alcoholic.id}" type="button" onclick="newDrinks(${alcoholic.id})">${alcoholic.name}</button>`
+    })
+}
 
 // adds the item to the receipt when you click for burgershot
 function newReceipt(id) {
@@ -118,6 +126,23 @@ function newService(id){
     }
     else{
         const item = services.find ((services) => services.id === id);
+
+        cart.push({
+            ...item,
+            numberOfUnits:1,
+        });
+        console.log(cart);
+    }
+    updateCart();
+}
+
+function newDrinks(id){
+
+    if(cart.some((item)=> item.id === id)){
+        changeQty("plus",id);
+    }
+    else{
+        const item = alcohol.find ((alcohol) => alcohol.id === id);
 
         cart.push({
             ...item,
@@ -345,6 +370,51 @@ function validation (){
                 <h5 id="time">Time: ${currentTime}</h5>`;
 
                 renderProducts();
+            }
+            else if (job == "autoexotic"){
+
+                // pulls up the tabbed menu
+                createTab.innerHTML += `<h4>Products</h4><div class="tab">
+                <button class="menuTab" id="burgers" type="button" onclick="openMenu(event, 'Burgers')">Services</button>
+                </div>`
+
+                document.getElementById("burgers").click();
+
+                // gets rid of the login form and displays the menu box and the log out button
+                loginForm.style.display = "none";
+                menuDisplay.style.display = "flex";
+                logoutBtn.style.display = "flex";
+                var logoImg = logos[2].imgSrc;
+
+                logo.innerHTML += `<img id="AELogo" src="${logoImg}">`
+
+                cashierName.innerHTML += `<h5 class="cashier"> Employee: ${name}</h5>`
+                dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
+                <h5 id="time">Time: ${currentTime}</h5>`;
+                renderServices();
+
+            }
+            else if(job == "vunicorn"){
+
+                // pulls up the tabbed menu
+                createTab.innerHTML += `<h4>Products</h4><div class="tab">
+                <button class="menuTab" id="burgers" type="button" onclick="openMenu(event, 'Burgers')">Drinks</button>
+                </div>`
+
+                document.getElementById("burgers").click();
+
+                // gets rid of the login form and displays the menu box and the log out button
+                loginForm.style.display = "none";
+                menuDisplay.style.display = "flex";
+                logoutBtn.style.display = "flex";
+                var logoImg = logos[3].imgSrc;
+
+                logo.innerHTML += `<img id="VULogo" src="${logoImg}">`
+
+                cashierName.innerHTML += `<h5 class="cashier"> Employee: ${name}</h5>`
+                dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
+                <h5 id="time">Time: ${currentTime}</h5>`;
+                renderDrinks();
             }
         }
         else {

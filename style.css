@@ -16,8 +16,16 @@
 *,*::before,*::after{
     box-sizing:border-box;
 }
+.container{
+    text-align:center;
+    width:100vw;
+}
 #tablet img{
     position:relative;
+    margin-bottom:auto;
+    margin-left:auto;
+    margin-right:auto;
+
 }
 /* login information */
 .login-container{
@@ -36,7 +44,6 @@
 }
 .login-container input{
     font-family:'Poppins',sans-serif;
-    margin-top:10px;
 }
 #errorMessage{
     font-size:0.8rem;
@@ -47,6 +54,7 @@
     font-family:'Poppins',sans-serif;
     color:var(--white);
     background-color:var(--red);
+    margin-top:10px;
     padding:5px 10px 5px 10px;
     border:none;
     border-radius:2px
@@ -77,15 +85,16 @@
 
 /* general stylings */
 .background{
-    position:absolute;
-    margin-left:85px;
-    top:85px;
-    width:1281px;
-    height:820px;
-}
-#BSBG{
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    top:-894px;
+    display:block;
     background-color:var(--background);
+    width:1282px;
+    height:802px;
 }
+
 
 .logo{
     display:flex;
@@ -103,6 +112,10 @@
     margin-top:10px;
     padding-bottom:10px;
 }
+#AELogo{
+    margin-bottom:10px;
+}
+
 .content{
     font-family:'Poppins',sans-serif;
     display:none;
@@ -444,7 +457,7 @@
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     background-color:var(--white);
     margin-top:25px;
-    margin-left:370px;
+    margin-left:250px;
     width:100px;
     height:100px;
     border-radius:20px;
