@@ -284,10 +284,12 @@ function applyDiscount(){
     grandTotal[1] = discountAmt;
 
     console.log(discountAmt);
-    if (discountAmt < 0){
+    if (discountAmt < 0 || discountAmt > 100){
         discountMessage.style.display="block";
+        discountAmt = 0;
     }
     else{
+        discountMessage.style.display="none"
         var discountAdj = discountAmt / 100;
         var discCalc = (grandTotal[0] * discountAdj);
 
@@ -300,6 +302,7 @@ function applyDiscount(){
 
 function closeBtn(){
     discountModal.style.display="none";
+    discountMessage.style.display="none"
 }
 
 // delete button
@@ -341,7 +344,8 @@ function validation (){
                 logoutBtn.style.display = "flex";
                 var logoImg = logos[1].imgSrc;
 
-                logo.innerHTML += `<img id="lostLogo" src="${logoImg}">`
+                logo.style.display="flex";
+                logo.innerHTML += `<img id="lostLogo" src="${logoImg}" draggable="false">`
 
                 cashierName.innerHTML += `<h5 class="cashier"> Employee: ${name}</h5>`
                 dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
@@ -363,7 +367,8 @@ function validation (){
                 logoutBtn.style.display = "flex";
                 var logoImg = logos[0].imgSrc;
 
-                logo.innerHTML += `<img src="${logoImg}">`
+                logo.style.display="flex";
+                logo.innerHTML += `<img src="${logoImg}" id="BSLogo" draggable="false">`
 
                 cashierName.innerHTML += `<h5 class="cashier"> Cashier: ${name}</h5>`
                 dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
@@ -386,7 +391,9 @@ function validation (){
                 logoutBtn.style.display = "flex";
                 var logoImg = logos[2].imgSrc;
 
-                logo.innerHTML += `<img id="AELogo" src="${logoImg}">`
+
+                logo.style.display="flex";
+                logo.innerHTML += `<img id="AELogo" src="${logoImg}" draggable="false">`
 
                 cashierName.innerHTML += `<h5 class="cashier"> Employee: ${name}</h5>`
                 dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
@@ -409,7 +416,8 @@ function validation (){
                 logoutBtn.style.display = "flex";
                 var logoImg = logos[3].imgSrc;
 
-                logo.innerHTML += `<img id="VULogo" src="${logoImg}">`
+                logo.style.display="flex";
+                logo.innerHTML += `<img id="VULogo" src="${logoImg}" draggable="false">`
 
                 cashierName.innerHTML += `<h5 class="cashier"> Employee: ${name}</h5>`
                 dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
@@ -443,7 +451,7 @@ function logout (){
 
     usernameInput.value = "";
     passwordInput.value = "";
-
+    logo.style.display="none";
     cashierName.innerHTML = "";
     dateTime.innerHTML = "";
     menuDisplay.style.display = "none";
