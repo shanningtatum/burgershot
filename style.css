@@ -117,7 +117,7 @@
     width:100px;
 }
 #AELogo{
-    margin-bottom:10px;
+    padding-top:10px;
 }
 
 .content{
@@ -310,7 +310,7 @@
     margin-left:30px;
 }
 #menu{
-    margin-right:60px;
+    margin-right:61px;
 }
 .screen{
     background-color:var(--babyblue);
