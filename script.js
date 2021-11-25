@@ -286,7 +286,6 @@ function applyDiscount(){
     console.log(discountAmt);
     if (discountAmt < 0 || discountAmt > 100){
         discountMessage.style.display="block";
-        discountAmt = 0;
     }
     else{
         discountMessage.style.display="none"
