@@ -111,14 +111,17 @@
     width:300px;
 }
 #BSLogo{
-    padding-top:10px;
+    padding-top:110px;
 }
 #lostLogo{
-    padding-top:15px;
+    padding-top:115px;
     width:100px;
 }
 #AELogo{
-    padding-top:10px;
+    padding-top:110px;
+}
+#VULogo{
+    padding-top:100px;
 }
 
 .content{
