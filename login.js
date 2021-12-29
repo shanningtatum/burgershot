@@ -1,9 +1,15 @@
 const accounts = [
     {
+        FirstName: "Audrey",
+        username: "audreygains",
+        password: "cbai",
+        job: "mechanic",
+    },
+    {
         FirstName: "Naomi",
         username: "naomisong",
         password: "1234",
-        job: "mechanic",
+        job: "burgershot",
     },
     {
         FirstName: "Oliver",

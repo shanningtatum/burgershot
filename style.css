@@ -142,23 +142,30 @@
 }
 /* Receipt column styling */
 .info-header{
+    font-size:0.8rem;
     display:flex;
-    flex-direction:row;
-    width:200px;
-}
-.cashier{
-    width:120px;
-}
-.cashier-info{
-    display:flex;
+    margin-left:30px;
     flex-direction:row;
     justify-content:space-between;
+    width:380px;
+}
+.cashier{
+    display:flex;
+    flex-direction:row;
+    width:125px;
+}
+.cashier-info{
+    
+    display:flex;
+    flex-direction:row;
     margin-top:-20px;
     margin-left:10px;
+    margin-right:-20px;
     align-items:center;
     height:30px;
 }
 .dateInfo{
+    font-size:0.8rem;
     display:flex;
     flex-direction:row;
     align-items:center;

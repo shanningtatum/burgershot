@@ -237,8 +237,8 @@ function clearCart(input){
         clearCartPopup.style.display="none";
         dateTime.innerHTML = "";
         dateTime.innerHTML += `
-        <h5 id="date">Date: ${currentDate}</h5>
-        <h5 id="time">Time: ${currentTime}</h5>`;
+        <p id="date">Date: ${currentDate}</p>
+        <p id="time">Time: ${currentTime}</p>`;
         grandTotal = [];
         discountCalc.innerHTML = `Discount (%): $0`;
 
@@ -318,7 +318,6 @@ function validation (){
     var usernameInput = document.getElementById('username').value;
     var passwordInput = document.getElementById('password').value;
 
-    errMessage.innerHTML = "";
     for ( i = 0; i < accounts.length; i++){
 
         if (usernameInput == accounts[i].username && passwordInput == accounts[i].password){
@@ -346,9 +345,9 @@ function validation (){
                 logo.style.display="flex";
                 logo.innerHTML += `<img id="lostLogo" src="${logoImg}" draggable="false">`
 
-                cashierName.innerHTML += `<h5 class="cashier"> Employee: ${name}</h5>`
-                dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
-                <h5 id="time">Time: ${currentTime}</h5>`;
+                cashierName.innerHTML += `<p class="cashier"> Employee: ${name}</p>`
+                dateTime.innerHTML += `<p id="date">Date: ${currentDate}</p>
+                <p id="time">Time: ${currentTime}</p>`;
                 renderServices();
             }
             else if (job == "burgershot"){
@@ -369,9 +368,9 @@ function validation (){
                 logo.style.display="flex";
                 logo.innerHTML += `<img src="${logoImg}" id="BSLogo" draggable="false">`
 
-                cashierName.innerHTML += `<h5 class="cashier"> Cashier: ${name}</h5>`
-                dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
-                <h5 id="time">Time: ${currentTime}</h5>`;
+                cashierName.innerHTML += `<p class="cashier"> Cashier: ${name}</p>`
+                dateTime.innerHTML += `<p id="date">Date: ${currentDate}</p>
+                <p id="time">Time: ${currentTime}</p>`;
 
                 renderProducts();
             }
@@ -394,9 +393,9 @@ function validation (){
                 logo.style.display="flex";
                 logo.innerHTML += `<img id="AELogo" src="${logoImg}" draggable="false">`
 
-                cashierName.innerHTML += `<h5 class="cashier"> Employee: ${name}</h5>`
-                dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
-                <h5 id="time">Time: ${currentTime}</h5>`;
+                cashierName.innerHTML += `<p class="cashier"> Employee: ${name}</p>`
+                dateTime.innerHTML += `<p id="date">Date: ${currentDate}</p>
+                <p id="time">Time: ${currentTime}</p>`;
                 renderServices();
 
             }
@@ -418,15 +417,16 @@ function validation (){
                 logo.style.display="flex";
                 logo.innerHTML += `<img id="VULogo" src="${logoImg}" draggable="false">`
 
-                cashierName.innerHTML += `<h5 class="cashier"> Employee: ${name}</h5>`
-                dateTime.innerHTML += `<h5 id="date">Date: ${currentDate}</h5>
-                <h5 id="time">Time: ${currentTime}</h5>`;
+                cashierName.innerHTML += `<p class="cashier"> Employee: ${name}</p>`
+                dateTime.innerHTML += `<p id="date">Date: ${currentDate}</p>
+                <p id="time">Time: ${currentTime}</p>`;
                 renderDrinks();
             }
         }
         else {
             errMessage.style.display = "block";
         }
+
     }
 }
 
@@ -456,6 +456,7 @@ function logout (){
     menuDisplay.style.display = "none";
     loginForm.style.display = "flex";
     logoutBtn.style.display = "none";
+    errMessage.style.display = "none";
 
 }
 
