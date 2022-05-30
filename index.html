@@ -6,51 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href=style.css>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <script src="login.js"></script>
-    <script src="products.js"></script>
-    <script src="script.js" defer></script>
     <title>Point of Sale</title>
 </head>
 <body>
-    <div class="container" id="tablet">
-        <img src="images/frame.png" draggable="false">
-        <div class="background" id="BSBG">
+    <div class="container">
+        <!-- <img src="images/frame.png" draggable="false"> -->
             <div class="logo" draggable="false">
                 <!-- render logo here -->
             </div>
-            <div class="box">
+            <div class="logout-container">
+                <button id="logoutBtn">Log Out</button>
+            </div>
+            <!-- clear cart box -->
+            <div class="clearCartBox">
                 <div class="clear-cart-input">
-                    <div>Clear the cart?</div>
-                    <button class="cart-input" id="yes-input" onclick="clearCart('yes')">Yes</button>
-                    <button class="cart-input" id="no-input" onclick="clearCart('no')">No</button>
+                    <h4>Clear the cart?</h4>
+                    <button class="cart-input" id="yes-input">Yes</button>
+                    <button class="cart-input" id="no-input">No</button>
                 </div>
             </div>
+            <!-- discount box -->
             <div class="discount-box">
                 <div class="discount-form">
-                    <div>Discount</div>
-                    <div id="discountMessage">Enter valid number</div>
+                    <h4>Discount</h4>
+                    <p class="errorMessages" id="discountMessage">Enter valid number</p>
                     <input type="number" id="discount-input" placeholder="Enter Discount"></input>
                     <div class="discount-buttons">
-                        <button id="discountSubmit" onclick="applyDiscount()">Submit</button>
-                        <button id="discountSubmit" onclick="closeBtn()">Cancel</button>
+                        <button class="discountSubmit">Submit</button>
+                        <button class="discountCancel">Cancel</button>
                     </div>
                 </div>
             </div>
+            <!-- login box-->
             <div class="login-container">
                 <h4>Login</h4>
-                <div id="errorMessage">Incorrect Login</div>
-                <input class="username" id="username" type="text" placeholder="Enter Username"></input>
-                <input class="password" id="password" type ="password" placeholder="Password"></input>
-                <input class="submit" type="submit" value="Login" onclick="validation()"></input>
+                <p class="errorMessages" id="errorMessage">Incorrect Login</p>
+                <div class="login-buttons">
+                    <label for="username">Username</label>
+                    <input class="username" id="username" type="text" name="username" placeholder="Enter Username"></input>
+                    <label for="username">Password</label>
+                    <input class="password" id="password" type ="password" name="password" placeholder="Password"></input>
+                    <input class="submit" type="submit" value="Login"></input>
+                </div>
             </div>
-            <div class="logout-container">
-                <button id="logoutBtn" onclick="logout()">Log Out</button>
-            </div>
-            
             <!-- Receipt box -->
             <div class="content" id="menu-content">
                 <div class="block" id="receipt">
-                    <h4 id="receipt-title">Order</h4>
+                    <h4 class="receipt-title">Order</h4>
                     <div class="info-header">
                         <div class="dateInfo">
                             <!--  render date info here-->
@@ -71,15 +73,15 @@
                     </div>
                     <div class="extra-info">
                         <div class="dotted-line"></div>
-                        <div class="summary">
+                        <div class="receipt-summary" id="summary">
                             <h4>Subtotal</h4>
                             <h4 class="summary-price">Subtotal (0 items): $0</h4>
                         </div>
-                        <div class="discount-line">
+                        <div class="receipt-summary" id="discount-line">
                             <h4>Discount</h4>
                             <h4 class="discount-price">Discount (%): $0</h4>
                         </div>
-                        <div class="grandtotal">
+                        <div class="receipt-summary" id="grandtotal">
                             <h4>Grand Total</h4>
                             <h4 class="grand-price">Grand Total : $0</h4>
                         </div>
@@ -88,24 +90,29 @@
 
                 <!-- Menu box -->
                 <div class="block" id="menu">
-                    <!-- Will show first screen (Burgers, Drinks, Sides)-->
-                    <div id="screenOne">
+                    <div id="menuTabs">
                         <!-- render menu Tabs here -->
                     </div>
-                    <div class="screen" id="Burgers">
+                    <div class="screen" id="firstScreen">
                         <!-- render first menu here -->
                     </div>
-                    <div class="screen" id="Drinks">
+                    <div class="screen" id="secondScreen">
                         <!-- render second menu here -->
                     </div>
-                    <div class="screen" id="Sides">
+                    <div class="screen" id="thirdScreen">
                         <!-- render third menu here -->
                     </div>
-                    <button class="discount" onclick="discountBtn()">Discount</button>
-                    <button class="clear-cart" onclick="clearCartBtn()">Clear Cart</button>
+                    <div class="extra-buttons">
+                        <button class="discount">Discount</button>
+                        <button class="clear-cart">Clear Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+    <script src="products.js"></script>
+
 </body>
 </html>
